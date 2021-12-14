@@ -8,7 +8,7 @@ const Recipes = () => {
     const getRecipes = async()=>{
         const response = await fetch(url);
         const recipes = await response.json();
-        setRecipes(recipes);
+        setRecipes(recipes.meals);
     }
 
     useEffect(()=>{
@@ -16,14 +16,15 @@ const Recipes = () => {
     },[])
     return (
         <>
-            <h3>Recipes App</h3>
+            <h3>Recipes </h3>
             <ul className='users'>
                 {recipes.map((recipe)=>{
                     const{idMeal,strMeal,strCategory,strMealThumb,strYoutube}=recipe
                     return <li key={idMeal}>
                         <img src={strMealThumb} alt={strMeal} />
                         <div>
-                            <h4>{strMeal}</h4>
+                            <h3>{strMeal}</h3>
+                            <h4>{strCategory}</h4>
                             <a href={strYoutube}>Watch Youtube recipe</a>
                         </div>
 
